@@ -1,4 +1,4 @@
-# LeetCode-Solutions[![Awesome](./other/awesome)
+# LeetCode-Solutions[![Awesome](./other/mypic)
 
 _Author: Junyan Xu_
 
