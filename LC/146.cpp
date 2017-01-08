@@ -5,37 +5,39 @@ public:
     }
 
     int get(int key) {
-        if(data.count(key)){
-            pair<int, int> res = *data[key];
-            LRU.erase(data[key]);
-            LRU.push_front(res);
-            data[key] = LRU.begin();
-            return res.second;
-        }
+        if(!kp.count(key)){return -1;}
         else{
-            return -1;
+            pair<int, int> temp = *kp[key];
+            data.erase(kp[key]);
+            data.push_front(temp);
+            kp[key] = data.begin();
+            return temp.second;
         }
     }
 
     void set(int key, int value) {
-        if(data.count(key)){
-            LRU.erase(data[key]);
-            LRU.push_front(make_pair(key, value));
-            data[key] = LRU.begin();
+        if(kp.count(key)){
+            pair<int, int> temp = *kp[key];
+            temp.second = value;
+            data.erase(kp[key]);
+            data.push_front(temp);
+            kp[key] = data.begin();
         }
-        elseflag
-            if(LRU.size() == this->cap) {
-                data.erase(LRU.back().first);
-                LRU.pop_back();
+        else{
+            if(data.size() < this->cap){
+                data.push_front(make_pair(key, value));
+                kp[key] = data.begin();
             }
-            LRU.push_front(make_pair(key, value));
-            data[key] = LRU.begin();
+            else{
+                kp.erase(data.back().first);
+                data.pop_back();
+                data.push_front(make_pair(key, value));
+                kp[key] = data.begin();
+            }
         }
     }
-
 private:
     int cap;
-    list<pair<int, int>> LRU;
-    unordered_map<int, list<pair<int, int>>::iterator> data;
-
+    unordered_map<int, list<pair<int,int>>::iterator> kp;
+    list<pair<int, int>> data;
 };
