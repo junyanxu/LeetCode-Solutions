@@ -18,7 +18,7 @@ public:
                 }
                 sign = s[i];
                 d = 0;
-            }
+            }œ
         }
         while (!nums.empty()) {
             res += nums.top();
