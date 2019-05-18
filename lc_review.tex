@@ -1,0 +1,23 @@
+\documentclass[11pt, oneside]{article}   	% use "amsart" instead of "article" for AMSLaTeX format
+\usepackage{mystyle}
+\usepackage{lipsum}
+\usepackage{tikz}
+
+\title{Leet-Code Review}
+\author{junyan.xu\footnote{junyanxu5513@gmail.com}}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\foreach \x in {1,2,3,4,5,6,7,8,9,10}
+         {
+           \lipsum[\x]
+           \IfFileExists{chapter_\x.tex}{
+             \input{chapter_\x.tex}
+           }{}
+         }
+\newpage
+
+
+\end{document}
