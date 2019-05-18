@@ -1,0 +1,13 @@
+\contentsline {section}{\numberline {1}Important Algorithm}{2}{section.1}
+\contentsline {subsection}{\numberline {1.1}A Star Algorithm}{2}{subsection.1.1}
+\contentsline {section}{\numberline {2}Chapter 2}{2}{section.2}
+\contentsline {section}{\numberline {3}Chapter 3}{2}{section.3}
+\contentsline {section}{\numberline {4}Chapter 4}{3}{section.4}
+\contentsline {section}{\numberline {5}Chapter 5}{3}{section.5}
+\contentsline {subsection}{\numberline {5.1}Delete A Node In BST}{3}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}Minimum Number of Arrows to Burst Balloons}{4}{subsection.5.2}
+\contentsline {subsection}{\numberline {5.3}Minimum Moves to Equal Array Elements}{4}{subsection.5.3}
+\contentsline {subsection}{\numberline {5.4}4 Sum Two}{5}{subsection.5.4}
+\contentsline {subsection}{\numberline {5.5}Assign Cookie}{5}{subsection.5.5}
+\contentsline {subsection}{\numberline {5.6}132 Pattern}{6}{subsection.5.6}
+\contentsline {subsection}{\numberline {5.7}}{6}{subsection.5.7}

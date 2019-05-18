@@ -1,0 +1,35 @@
+\usepackage{geometry}                           % See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                                  % ... or a4paper or a5paper or ...
+%\geometry{landscape}                           % Activate for rotated page geometry
+%\usepackage[parfill]{parskip}                  % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}                           % Use pdf, png, jpg, or eps§ with pdflatex; use eps in DVI mode
+% TeX will automatically convert eps --> pdf in pdflatex
+\usepackage{amssymb}
+\usepackage{bbm}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks,
+  citecolor=black,
+  filecolor=black,
+  linkcolor=black,
+  urlcolor=black
+}
+
+\lstset { %
+  language=C++,
+  basicstyle=\small\ttfamily,
+  keywordstyle=\color{blue}\ttfamily,
+  stringstyle=\color{green}\ttfamily,
+  commentstyle=\color{red}\ttfamily,
+  morecomment=[l][\color{magenta}]{\#}
+  }
+
+\newcommand\norm[1]{\left\lVert#1\right\rVert}
+
+\usepackage{amsthm}
+\theoremstyle{definition}
+\newtheorem{exmp}{Example}[section]

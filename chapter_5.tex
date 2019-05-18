@@ -1,0 +1,168 @@
+\section{Chapter 5}
+
+
+\subsection{Delete A Node In BST}
+Recursive is the best, remember to devide and conquer. Keep deleteing what you copied. {\color{blue} \textbf{time complexity O(log(n)), mem O(log(n))}}
+\begin{lstlisting}
+  class Solution {
+    public:
+    TreeNode* deleteNode(TreeNode* root, int key) {
+      if(!root) return NULL;
+      if(root->val < key){
+        root->right = deleteNode(root->right, key);
+      }
+      else if(root->val > key){
+        root->left = deleteNode(root->left, key);
+      }
+      else{
+        if(!root->left || !root->right){
+          root = root->left ? root->left: root->right;
+        }
+        else{
+          auto temp = root->right;
+          while(temp->left)
+          temp = temp->left;
+          root->val = temp->val;
+          // key of the recursion
+          root->right = deleteNode(root->right, temp->val);
+        }
+      }
+      return root;
+    }
+ };
+\end{lstlisting}
+
+
+
+
+\subsection{Minimum Number of Arrows to Burst Balloons}
+Greedy Algo, very similar to merge intervals. {\color{blue}\textbf{time complexity $O(Nlog(N))$}}, {\color{blue}\textbf{space is $O(1)$}}
+
+\begin{lstlisting}
+class Solution {
+public:
+    int findMinArrowShots(vector<pair<int, int>>& points) {
+        sort(points.begin(), points.end());
+        int count = 0;
+        int right = 0;
+        for(int i=0; i<points.size(); i++){
+            if(i==0){
+                right = points[i].second;
+                count++;
+                continue;
+            }
+            if(points[i].first <= right)
+                right = min(right, points[i].second);
+            else{
+                count++;
+                right = points[i].second;
+            }
+        }
+        return count;
+    }
+};
+\end{lstlisting}
+
+
+
+\subsection{Minimum Moves to Equal Array Elements}
+
+Find minimum first, {\color{blue}\textbf{time complexity $O(N)$}}, {\color{blue}\textbf{space is $O(1)$}}. A set of good function in \textbf{algorithm} to be used
+
+\begin{enumerate}
+  \item nth\_element(a.begin(), a.begin()+n, a.end())
+  \item *min\_element(a.begin(), a.end())
+  \item *max\_element(a.begin(), a.end())
+\end{enumerate}
+
+
+
+\begin{lstlisting}
+class Solution {
+public:
+    int minMoves(vector<int>& nums) {
+        int m = *min_element(nums.begin(), nums.end());
+        long long res = 0;
+        for(auto x: nums)
+            res += abs((long long)x - m);
+        return res;
+    }
+};
+\end{lstlisting}
+
+
+
+\subsection{4 Sum Two}
+Use unordered\_map. {\color{blue}\textbf{time complexity $O(N^2)$}}, {\color{blue}\textbf{space is $O(N^2)$}}
+
+\begin{lstlisting}
+class Solution {
+public:
+    int fourSumCount(
+        vector<int>& A,
+        vector<int>& B,
+        vector<int>& C,
+        vector<int>& D
+      ) {
+        unordered_map<int, int> a, b;
+        for(auto x: A) for(auto y: B) a[x+y]++;
+        for(auto x: C) for(auto y: D) b[x+y]++;
+        int res = 0;
+        for(auto x: a){
+            if(b.count(-x.first))
+                res += x.second*b[-x.first];
+        }
+        return res;
+    }
+};
+\end{lstlisting}
+
+
+\subsection{Assign Cookie}
+Sort and double pointer.{\color{blue}\textbf{time complexity O(Nlog(N))}}, {\color{blue}\textbf{space is O(1)}}
+\begin{lstlisting}
+class Solution {
+public:
+    int findContentChildren(vector<int>& g, vector<int>& s) {
+        sort(g.begin(), g.end());
+        sort(s.begin(), s.end());
+        int i=0, j=0, count=0;
+        while(i < g.size() && j < s.size()){
+            if(g[i] <= s[j]){
+                i++;
+                j++;
+                count++;
+            }
+            else{
+                j++;
+            }
+        }
+        return count;
+    }
+};
+\end{lstlisting}
+
+
+\subsection{132 Pattern}
+Using reverse stack, keep track of the second largest. {\color{blue}\textbf{time complexity O(N)}}, {\color{blue}\textbf{space is O(N)}}
+\begin{lstlisting}
+class Solution {
+public:
+    bool find132pattern(vector<int>& nums) {
+        stack<int> s;
+        int s2 = INT_MIN;
+        for(int i=nums.size()-1; i>-1; i--){
+            if(nums[i] < s2)
+                return true;
+            while(!s.empty() && s.top() < nums[i]){
+                s2 = s.top();
+                s.pop();
+            }
+            s.push(nums[i]);
+        }
+        return false;
+    }
+};
+\end{lstlisting}
+
+\subsection{}
